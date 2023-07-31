@@ -47,9 +47,9 @@
       </button>
     </div>
   </div>
-  <figure class="notification" *ngIf="updateSuccess">
-    <div class="notification_body">&radic; {{ updateText }}</div>
-    <div class="notification_progress"></div>
-  </figure>
+  <app-notifi
+    [updateSuccess]="updateSuccess"
+    [updateText]="updateText"
+  ></app-notifi>
 </main>
 <app-footer></app-footer>

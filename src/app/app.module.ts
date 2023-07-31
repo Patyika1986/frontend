@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLinkActive } from '@angular/router';
 import { GetOneUserComponent } from './get-one-user/get-one-user.component';
 import { AddCantactComponent } from './add-cantact/add-cantact.component';
+import { NotifiComponent } from './notifi/notifi.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddCantactComponent } from './add-cantact/add-cantact.component';
     FooterComponent,
     GetOneUserComponent,
     AddCantactComponent,
+    NotifiComponent,
   ],
   imports: [
     BrowserModule,
