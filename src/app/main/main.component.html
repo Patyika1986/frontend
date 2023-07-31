@@ -1,0 +1,30 @@
+<app-header></app-header>
+<app-nav></app-nav>
+<main id="main">
+  <h2>Alle Kontakte</h2>
+
+  <div class="select-box">
+    <select (change)="filter($event)">
+      <option *ngFor="let item of filterItems">{{ item }}</option>
+    </select>
+  </div>
+  <div class="container">
+    <div class="card" *ngFor="let contact of contacts">
+      <div class="card-header">
+        <strong>ID: {{ contact.id }}</strong>
+      </div>
+      <div class="card-body">
+        <p>
+          <span class="text">Vor und Nachname: </span>{{ contact.firstname }}
+          {{ contact.lastname }}
+        </p>
+        <p><span class="text">Geschlecht: </span> {{ contact.gender }}</p>
+        <p><span class="text">E-mail: </span> {{ contact.email }}</p>
+        <p><span class="text">Alter: </span> {{ contact.age }} Jahre alt</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <li *ngFor="let contact of contacts">{{ contact.firstname }}</li> -->
+</main>
+<app-footer></app-footer>

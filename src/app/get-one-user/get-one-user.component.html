@@ -1,0 +1,43 @@
+<app-header></app-header>
+<app-nav></app-nav>
+<main id="main">
+  <h1>Kontakt suchen</h1>
+  <div class="container">
+    <div class="row">
+      <label>Kontakt suchen...</label>
+    </div>
+    <div class="row">
+      <input
+        type="text"
+        placeholder="Kontakt suchen mit Hilfe der Nachname"
+        name="contactSearch"
+        [(ngModel)]="search"
+      />
+      <button id="search-btn" (click)="searchContact(search)">Suchen</button>
+    </div>
+    <div class="find" *ngFor="let con of contact">
+      <div class="card">
+        <div class="card-header">
+          <strong>ID: {{ con.id }} </strong>
+          <!-- <span class="material-symbols-outlined"> edit </span> -->
+        </div>
+        <div class="card-body">
+          <p>
+            <span class="text">Vor und Nachname: </span>
+            {{ con.firstname }} {{ con.lastname }}
+          </p>
+          <p><span class="text">Geschlecht: </span> {{ con.gender }}</p>
+          <p><span class="text">E-Mail: </span> {{ con.email }}</p>
+          <p><span class="text">Alter:</span> {{ con.age }}</p>
+          <button id="delete-btn" (click)="deleteUserFromData(con.id)">
+            Kontakt löschen
+          </button>
+          <button id="update-btn" (click)="updateContact(con.id)">
+            Änderung
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

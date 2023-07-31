@@ -1,0 +1,55 @@
+<app-header></app-header>
+<app-nav></app-nav>
+<main id="main">
+  <header id="header">
+    <h1>Neues Kontakt hinzufügen</h1>
+  </header>
+  <div class="container">
+    <div [formGroup]="form" id="form">
+      <input
+        type="text"
+        placeholder="Vorname"
+        name="firstname"
+        formControlName="firstname"
+      />
+
+      <input
+        type="text"
+        placeholder="Nachname"
+        name="lastname"
+        formControlName="lastname"
+      />
+
+      <input
+        type="text"
+        placeholder="Geschlecht"
+        name="gender"
+        formControlName="gender"
+      />
+
+      <input
+        type="email"
+        placeholder="E-Mail"
+        name="email"
+        formControlName="email"
+      />
+
+      <input
+        type="number"
+        placeholder="Alter"
+        name="age"
+        formControlName="age"
+      />
+
+      <button id="add-btn" (click)="addContact()">Kontakt anlegen</button>
+      <button id="update-btn" *ngIf="updateState" (click)="update(form)">
+        Änderung speichern
+      </button>
+    </div>
+  </div>
+  <figure class="notification" *ngIf="updateSuccess">
+    <div class="notification_body">&radic; {{ updateText }}</div>
+    <div class="notification_progress"></div>
+  </figure>
+</main>
+<app-footer></app-footer>

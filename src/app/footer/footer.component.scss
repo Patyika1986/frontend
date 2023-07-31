@@ -1,0 +1,21 @@
+#footer {
+    min-height: 5vh;
+    background-color: black;
+    color: rgb(118, 166, 230);
+    padding: 1rem;
+
+    p {
+        word-spacing: 7px;
+        letter-spacing: 1px;
+        font-weight: 600;
+    
+        span {
+            color: rgb(118, 166, 230);
+            font-weight: bold;
+        }
+
+        .red {
+            color: rgb(255, 68, 68);
+        }
+    }
+}
