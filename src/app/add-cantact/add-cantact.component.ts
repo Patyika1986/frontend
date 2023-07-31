@@ -34,7 +34,7 @@ export class AddCantactComponent implements OnInit, OnDestroy {
   updatesContact: Contacts[] = [];
   updateState: boolean = false;
   updateSuccess: boolean = false;
-  updateText:string = '';
+  updateText: string = '';
 
   ngOnInit(): void {
     const contactId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -72,23 +72,22 @@ export class AddCantactComponent implements OnInit, OnDestroy {
       this.dataFacadeService.addNewContact$
         .pipe(takeUntil(this.subscribtion$))
         .subscribe((contact) => {});
-        this.updateText = 'Hinzufügen war erfolgreich !';
-        this.updateSuccess = true;
-
+      this.updateText = 'Hinzufügen war erfolgreich !';
+      this.updateSuccess = true;
     }
   }
 
-  update(form:any) {
+  update(form: any) {
     const contactId = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(contactId,'param id');
-    console.log(form.value,'form');
-    if(Number(contactId) === form.value.id){
-      if(form.status === "VALID"){
-        this.dataFacadeService.updataContact(Number(contactId),form.value);
-        this.dataFacadeService.updateContact$.pipe(takeUntil(this.subscribtion$)).subscribe();
+    if (Number(contactId) === form.value.id) {
+      if (form.status === 'VALID') {
+        this.dataFacadeService.updataContact(Number(contactId), form.value);
+        this.dataFacadeService.updateContact$
+          .pipe(takeUntil(this.subscribtion$))
+          .subscribe();
         this.updateText = 'Änderung erfolgreich gespeichert !';
         this.updateSuccess = true;
-      }else{
+      } else {
         this.updateSuccess = false;
       }
     }

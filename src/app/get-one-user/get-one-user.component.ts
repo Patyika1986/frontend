@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./get-one-user.component.scss'],
 })
 export class GetOneUserComponent implements OnInit, OnDestroy {
-  constructor(private dataFacadeService: DataFacadeService, private router: Router) {}
+  constructor(
+    private dataFacadeService: DataFacadeService,
+    private router: Router
+  ) {}
 
   subscribtion$ = new Subject();
   search: any;
@@ -33,10 +36,10 @@ export class GetOneUserComponent implements OnInit, OnDestroy {
       });
   }
 
-  updateContact(id:number){
-    const contact = this.contact.find(con => con.id === id);
-    if(contact){
-      this.router.navigate(['add-contact',contact.id]);
+  updateContact(id: number) {
+    const contact = this.contact.find((con) => con.id === id);
+    if (contact) {
+      this.router.navigate(['add-contact', contact.id]);
     }
   }
 

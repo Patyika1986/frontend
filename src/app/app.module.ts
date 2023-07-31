@@ -13,7 +13,6 @@ import { RouterLinkActive } from '@angular/router';
 import { GetOneUserComponent } from './get-one-user/get-one-user.component';
 import { AddCantactComponent } from './add-cantact/add-cantact.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,17 +21,16 @@ import { AddCantactComponent } from './add-cantact/add-cantact.component';
     MainComponent,
     FooterComponent,
     GetOneUserComponent,
-    AddCantactComponent
+    AddCantactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
