@@ -12,6 +12,12 @@
         name="firstname"
         formControlName="firstname"
       />
+      <label class="alert" *ngIf="form.get('firstname')?.hasError('minlength')"
+        >Der Nachname muss mindestens aus 3 Buchstaben bestehen!</label
+      >
+      <label class="danger" *ngIf="form.get('firstname')?.hasError('maxlength')"
+        >Der eingegebene Name ist zu lang!</label
+      >
 
       <input
         type="text"
@@ -20,12 +26,26 @@
         formControlName="lastname"
       />
 
+      <label class="alert" *ngIf="form.get('lastname')?.hasError('minlength')"
+        >Der Nachname muss mindestens aus 3 Buchstaben bestehen!</label
+      >
+      <label class="danger" *ngIf="form.get('lastname')?.hasError('maxlength')"
+        >Der eingegebene Nachname ist zu lang!</label
+      >
+
       <input
         type="text"
         placeholder="Geschlecht"
         name="gender"
         formControlName="gender"
       />
+
+      <label class="alert" *ngIf="form.get('gender')?.hasError('maxlength')"
+        >Bitte geben Sie nur W oder M an!</label
+      >
+      <label class="danger" *ngIf="form.get('gender')?.hasError('minlength')"
+        >Bitte geben Sie nur W oder M an!</label
+      >
 
       <input
         type="email"
@@ -34,17 +54,36 @@
         formControlName="email"
       />
 
+      <label class="alert" *ngIf="form.get('email')?.hasError('maxlength')"
+        >Die eingegebene E-Mail-Adresse ist zu lang, darf nur bis zu 50 Zeichen
+        lang sein!</label
+      >
+      <label class="danger" *ngIf="form.get('email')?.hasError('minlength')"
+        >E-Mail muss mindestens aus 6 Zeichen bestehen</label
+      >
+
+      <label class="danger" *ngIf="form.get('email')?.hasError('email')"
+        >Die eingegebene E-Mail ist keine korrekte E-Mail-Adresse</label
+      >
+
       <input
         type="number"
         placeholder="Alter"
         name="age"
         formControlName="age"
       />
+      <label class="danger" *ngIf="form.get('age')?.hasError('minlength')"
+        >* Pflichtfeld</label
+      >
 
       <button id="add-btn" (click)="addContact()">Kontakt anlegen</button>
       <button id="update-btn" *ngIf="updateState" (click)="update(form)">
         Änderung speichern
       </button>
+      <label class="invalidForm" *ngIf="formStatus"
+        >Das Formular ist Invalide bitte überprüfen Sie alle Ihre eingaben, und
+        versuchen Sie es erneuert!</label
+      >
     </div>
   </div>
   <app-notifi

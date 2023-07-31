@@ -87,3 +87,24 @@
     }
   }
 }
+
+.alert {
+  color: orange;
+}
+
+.danger {
+  color: red;
+}
+
+.prim {
+  color: black;
+}
+
+.invalidForm{
+  color: rgb(27, 27, 27);
+  border-radius: .3rem;
+  padding: .5rem;
+  margin-top: .5rem;
+  background-color: rgba(255, 0, 0, 0.301);
+  font-weight: bold;
+}

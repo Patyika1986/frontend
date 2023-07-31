@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DataFacadeService } from '../data-facade.service';
 import { Contacts } from '../contact';
 import { Subject, takeUntil } from 'rxjs';
@@ -22,11 +22,11 @@ export class AddCantactComponent implements OnInit, OnDestroy {
   private subscribtion$ = new Subject();
 
   public form = this.formbuilder.group({
-    firstname: [''],
-    lastname: [''],
-    gender: [''],
-    email: [''],
-    age: [''],
+    firstname: ['',Validators.compose([Validators.minLength(3),Validators.maxLength(50),Validators.required])],
+    lastname: ['',Validators.compose([Validators.minLength(3),Validators.maxLength(50),Validators.required])],
+    gender: ['',Validators.compose([Validators.minLength(1),Validators.maxLength(1)])],
+    email: ['',Validators.compose([Validators.minLength(6),Validators.maxLength(45),Validators.email,Validators.required])],
+    age: ['',Validators.compose([Validators.required,Validators.minLength(1)])],
     id: [0],
   });
 
@@ -35,6 +35,7 @@ export class AddCantactComponent implements OnInit, OnDestroy {
   updateState: boolean = false;
   updateSuccess: boolean = false;
   updateText: string = '';
+  formStatus: boolean = false;
 
   ngOnInit(): void {
     const contactId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -74,6 +75,13 @@ export class AddCantactComponent implements OnInit, OnDestroy {
         .subscribe((contact) => {});
       this.updateText = 'Hinzufügen war erfolgreich !';
       this.updateSuccess = true;
+    }else if(this.form.status === "INVALID"){
+      setTimeout(() => {
+        this.formStatus = true;
+      },1000);
+      setTimeout(() => {
+        this.formStatus = false;
+      },12000);
     }
   }
 
